@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080710">
+
+<title>Bông ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --pink: #ff9fbd;
+    --pale: #ffe1eb;
+    --violet: #bda4ff;
+    --gold: #e8c9a1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #080710;
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* BACKGROUND */
+
+#sky {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.aurora {
+    position: fixed;
+    inset: -25%;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse at 18% 30%, #71304d44, transparent 40%),
+        radial-gradient(ellipse at 80% 60%, #4e367044, transparent 42%),
+        radial-gradient(ellipse at 50% 100%, #8c355533, transparent 35%);
+
+    filter: blur(35px);
+    animation: aurora 18s ease-in-out infinite alternate;
+}
+
+@keyframes aurora {
+    to {
+        transform: translate(4%, -3%) rotate(8deg) scale(1.08);
+    }
+}
+
+/* OPENING SCREEN */
+
+#opening {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: grid;
+    place-items: center;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #21111f 0%,
+            #0a0811 62%,
+            #05050a 100%
+        );
+
+    transition: opacity .9s, visibility .9s;
+}
+
+#opening.closed {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.open-card {
+    position: relative;
+    width: min(88vw, 440px);
+    padding: 55px 24px 48px;
+
+    border: 1px solid #f7b6ce55;
+    border-radius: 48% 48% 44% 44%;
+
+    box-shadow:
+        0 0 70px #ed7ba622,
+        inset 0 0 55px #ed7ba611;
+}
+
+.open-card::before,
+.open-card::after {
+    content: "";
+    position: absolute;
+    inset: -14px;
+
+    border: 1px solid #e8c9a144;
+    border-radius: 50%;
+
+    animation: orbit 22s linear infinite;
+    pointer-events: none;
+}
+
+.open-card::after {
+    inset: -27px;
+    border-style: dashed;
+    opacity: .4;
+    animation-direction: reverse;
+}
+
+@keyframes orbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mini {
+    font-size: 9px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.open-name {
+    font: clamp(55px, 12vw, 82px)/1 'Italiana', serif;
+    color: #ffe8ef;
+    margin: 22px 0 12px;
+    text-shadow: 0 0 32px #ff9fbd77;
+}
+
+.open-sub {
+    font-style: italic;
+    font-size: 14px;
+    color: #cdbac8;
+    margin-bottom: 30px;
+}
+
+/* BUTTON */
+
+button {
+    font: 600 10px 'Manrope', sans-serif;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: white;
+
+    background: linear-gradient(120deg, #9b4567, #56345f);
+
+    border: 1px solid #f4b5ca99;
+    border-radius: 999px;
+
+    padding: 15px 25px;
+
+    cursor: pointer;
+    touch-action: manipulation;
+    position: relative;
+    z-index: 5;
+
+    box-shadow:
+        0 8px 28px #0008,
+        0 0 22px #f18bac22;
+
+    transition: .25s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px #f18bac55;
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+/* HEADER */
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 22px 5vw;
+    z-index: 5;
+}
+
+.brand {
+    font: 20px 'Italiana', serif;
+    letter-spacing: .2em;
+    color: #ffe6ee;
+}
+
+.brand span {
+    color: var(--pink);
+}
+
+.status {
+    font-size: 9px;
+    letter-spacing: .24em;
+    color: #bbaab8;
+}
+
+/* HERO */
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.hero {
+    min-height: 100svh;
+
+    display: grid;
+    place-items: center;
+
+    text-align: center;
+    padding: 110px 20px 80px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+
+    width: min(82vw, 760px);
+    aspect-ratio: 1;
+
+    border: 1px solid #ffc4d51c;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 35px #ffc4d508,
+        0 0 0 75px #ffc4d505,
+        0 0 100px #e978a411;
+
+    animation: pulseRing 7s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+    50% {
+        transform: scale(1.045);
+        opacity: .55;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    font-size: 9px;
+    letter-spacing: .48em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+h1 {
+    font: clamp(78px, 17vw, 174px)/.9 'Italiana', serif;
+    font-weight: 400;
+    letter-spacing: -.035em;
+    margin: 28px 0 16px;
+    color: #fff0f4;
+    text-shadow: 0 0 55px #ff9fbd4c;
+}
+
+h1 span {
+    display: inline-block;
+    color: var(--pink);
+    animation: nameGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes nameGlow {
+    50% {
+        text-shadow:
+            0 0 18px #ff8ebc,
+            0 0 60px #f16a9b99;
+
+        transform: translateY(-4px);
+    }
+}
+
+.hero-caption {
+    font: italic 15px 'Italiana', serif;
+    letter-spacing: .1em;
+    color: #cbb8c8;
+}
+
+/* HEART */
+
+.heart-core {
+    width: 82px;
+    height: 82px;
+    margin: 42px auto 0;
+
+    position: relative;
+
+    display: grid;
+    place-items: center;
+}
+
+.heart-core::before,
+.heart-core::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    border: 1px solid #f9a9c966;
+    border-radius: 50%;
+
+    animation: heartHalo 2.5s ease-out infinite;
+}
+
+.heart-core::after {
+    inset: 10px;
+    animation-delay: .8s;
+}
+
+@keyframes heartHalo {
+    0% {
+        transform: scale(.7);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: scale(1.55);
+        opacity: 0;
+    }
+}
+
+.heart-core b {
+    font-size: 34px;
+    color: #ff9fbd;
+    text-shadow: 0 0 25px #ff6d9f;
+    animation: beat 1.4s infinite;
+}
+
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.23);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.14);
+    }
+}
+
+.hint {
+    margin-top: 55px;
+    font-size: 8px;
+    letter-spacing: .34em;
+    color: #8f7e91;
+}
+
+/* GALLERY */
+
+.gallery {
+    padding: 80px 22px 120px;
+    max-width: 1180px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 58px;
+}
+
+.section-title small {
+    font-size: 9px;
+    letter-spacing: .4em;
+    color: var(--gold);
+}
+
+.section-title h2 {
+    font: clamp(42px, 7vw, 70px) 'Italiana', serif;
+    font-weight: 400;
+    margin: 17px 0 10px;
+}
+
+.section-title p {
+    font-size: 12px;
+    color: #aa9aaa;
+    letter-spacing: .08em;
+}
+
+.photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 5vw, 70px);
+    align-items: center;
+}
+
+.photo {
+    position: relative;
+    padding: 11px;
+
+    background: linear-gradient(145deg, #fff2f522, #ffffff04);
+
+    border: 1px solid #f4c6d34a;
+
+    box-shadow: 0 30px 90px #0009;
+
+    opacity: 0;
+    transform: translateY(35px) rotate(-2deg);
+
+    transition: opacity 1s, transform 1s;
+}
+
+.photo:nth-child(2) {
+    transform: translateY(35px) rotate(2deg);
+    margin-top: 75px;
+}
+
+.photo.visible {
+    opacity: 1;
+    transform: translateY(0) rotate(-2deg);
+}
+
+.photo:nth-child(2).visible {
+    transform: translateY(0) rotate(2deg);
+}
+
+.photo:hover {
+    transform: translateY(-8px) rotate(0deg) !important;
+}
+
+.photo::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid #fff2f21c;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.photo img {
+    width: 100%;
+    height: clamp(330px, 55vw, 660px);
+
+    display: block;
+    object-fit: cover;
+    object-position: center 30%;
+
+    background: #15101a;
+}
+
+.photo:nth-child(2) img {
+    object-position: center 28%;
+}
+
+.caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 5px 4px;
+
+    color: #e8d2dd;
+    font: italic 15px 'Italiana', serif;
+}
+
+.caption span:last-child {
+    font: 8px 'Manrope', sans-serif;
+    letter-spacing: .2em;
+    color: #a994a3;
+}
+
+/* FINAL */
+
+.end {
+    padding: 40px 20px 100px;
+    text-align: center;
+}
+
+.end .final-name {
+    font: clamp(48px, 10vw, 88px) 'Italiana', serif;
+    color: #ffcada;
+    text-shadow: 0 0 35px #f27cae66;
+}
+
+.end p {
+    font-size: 9px;
+    letter-spacing: .35em;
+    color: #99899a;
+    text-transform: uppercase;
+}
+
+/* FLOATING HEARTS */
+
+.float-heart {
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+
+    color: #ff9fbd;
+    text-shadow: 0 0 15px #ff6c9f;
+
+    animation: rise 4s ease-out forwards;
+}
+
+@keyframes rise {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(.5);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-85vh)
+            translateX(var(--drift))
+            scale(1.5)
+            rotate(35deg);
+    }
+}
+
+/* SPARKLES */
+
+.spark {
+    position: fixed;
+    z-index: 19;
+    pointer-events: none;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #ffe5ef;
+    box-shadow: 0 0 12px 3px #ff9fbd;
+
+    animation: sparkle 1.5s ease-out forwards;
+}
+
+@keyframes sparkle {
+    to {
+        transform: translate(var(--dx), var(--dy)) scale(0);
+        opacity: 0;
+    }
+}
+
+#toTop {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 30;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    border-color: #ffffff33;
+    background: #1b1320dd;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    header {
+        padding: 18px;
+    }
+
+    .status {
+        font-size: 7px;
+    }
+
+    .photos {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .photo:nth-child(2) {
+        margin-top: 8px;
+    }
+
+    .photo img {
+        height: auto;
+        max-height: 700px;
+        object-fit: contain;
+    }
+
+    .gallery {
+        padding-top: 55px;
+    }
+
+    .hero {
+        min-height: 92svh;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="sky"></canvas>
+<div class="aurora"></div>
+
+<!-- OPENING -->
+
+<div id="opening">
+
+    <div class="open-card">
+
+        <div class="mini">
+            A little universe for
+        </div>
+
+        <div class="open-name">
+            Bông
+        </div>
+
+        <p class="open-sub">
+            Một góc nhỏ dành cho Bông
+        </p>
+
+        <button id="openButton">
+            Chạm để mở ♡
+        </button>
+
+    </div>
+
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="brand">
+        BÔNG <span>♡</span>
+    </div>
+
+    <div class="status">
+        FRIENDSHIP & LOVE · A LITTLE UNIVERSE
+    </div>
+
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Somewhere between friendship and love
+        </div>
+
+        <h1>
+            <span>Bông</span>
+        </h1>
+
+        <div class="hero-caption">
+            ♡ &nbsp;
+            a little friendship, a little love,
+            a lot of memories
+            &nbsp; ♡
+        </div>
+
+        <div class="heart-core">
+            <b>♥</b>
+        </div>
+
+        <div class="hint">
+            Scroll down · a few moments of you
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PHOTO GALLERY -->
+
+<section class="gallery" id="gallery">
+
+    <div class="section-title">
+
+        <small>
+            FRIENDSHIP · LOVE · MEMORIES
+        </small>
+
+        <h2>Bông</h2>
+
+        <p>
+            Hai khoảnh khắc · những điều đáng quý
+        </p>
+
+    </div>
+
+    <div class="photos">
+
+        <figure class="photo">
+
+            <img src="bong1.jpg" alt="Bông - ảnh 1">
+
+            <figcaption class="caption">
+
+                <span>Bông</span>
+                <span>01 / 02</span>
+
+            </figcaption>
+
+        </figure>
+
+        <figure class="photo">
+
+            <img src="bong2.jpg" alt="Bông - ảnh 2">
+
+            <figcaption class="caption">
+
+                <span>Bông</span>
+                <span>02 / 02</span>
+
+            </figcaption>
+
+        </figure>
+
+    </div>
+
+</section>
+
+<!-- END -->
+
+<section class="end">
+
+    <div class="final-name">
+        Bông ♡
+    </div>
+
+    <p>
+        A little friendship, a little love
+    </p>
+
+</section>
+
+</main>
+
+<footer>
+    FOR BÔNG · ♡
+</footer>
+
+<button id="toTop">
+    ↑
+</button>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+(() => {
+
+    /* STAR BACKGROUND */
+
+    const canvas = document.getElementById("sky");
+    const ctx = canvas.getContext("2d");
+
+    let stars = [];
+
+    function resize() {
+
+        const d = Math.min(devicePixelRatio || 1, 2);
+
+        canvas.width = innerWidth * d;
+        canvas.height = innerHeight * d;
+
+        canvas.style.width = innerWidth + "px";
+        canvas.style.height = innerHeight + "px";
+
+        ctx.setTransform(d, 0, 0, d, 0, 0);
+
+        stars = Array.from({
+            length: Math.min(
+                190,
+                Math.floor(innerWidth * innerHeight / 5200)
+            )
+        }, () => ({
+
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+
+            r: Math.random() * 1.35 + .2,
+
+            a: Math.random() * .55 + .12,
+
+            p: Math.random() * 6.28
+
+        }));
+
+    }
+
+    function draw(t) {
+
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+        for (const s of stars) {
+
+            const alpha =
+                s.a + Math.sin(t * .001 + s.p) * .16;
+
+            ctx.beginPath();
+
+            ctx.arc(
+                s.x,
+                s.y,
+                s.r,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle =
+                `rgba(255,222,237,${alpha})`;
+
+            ctx.shadowBlur = 9;
+            ctx.shadowColor = "#ff9fbd";
+
+            ctx.fill();
+
+        }
+
+        requestAnimationFrame(draw);
+
+    }
+
+    resize();
+
+    addEventListener("resize", resize);
+
+    requestAnimationFrame(draw);
+
+
+    /* OPENING BUTTON */
+
+    const opening = document.getElementById("opening");
+
+    const openButton =
+        document.getElementById("openButton");
+
+    function enter() {
+
+        opening.classList.add("closed");
+
+        for (let i = 0; i < 24; i++) {
+
+            setTimeout(() => {
+
+                heart(
+                    innerWidth * (.2 + Math.random() * .6),
+                    innerHeight * (.45 + Math.random() * .3)
+                );
+
+            }, i * 55);
+
+        }
+
+    }
+
+    openButton.addEventListener("click", enter);
+
+
+    /* MOBILE TOUCH */
+
+    openButton.addEventListener("touchend", e => {
+
+        e.preventDefault();
+        enter();
+
+    }, { passive: false });
+
+
+    /* PHOTO SCROLL EFFECT */
+
+    const obs = new IntersectionObserver(entries => {
+
+        entries.forEach(e => {
+
+            if (e.isIntersecting) {
+
+                e.target.classList.add("visible");
+
+                obs.unobserve(e.target);
+
+            }
+
+        });
+
+    }, {
+        threshold: .12
+    });
+
+    document.querySelectorAll(".photo").forEach(el => {
+
+        obs.observe(el);
+
+    });
+
+
+    /* FLOATING HEARTS */
+
+    function heart(x, y) {
+
+        const el = document.createElement("span");
+
+        el.className = "float-heart";
+
+        el.textContent = [
+            "♥",
+            "♡",
+            "✧"
+        ][Math.floor(Math.random() * 3)];
+
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+
+        el.style.fontSize =
+            (13 + Math.random() * 25) + "px";
+
+        el.style.setProperty(
+            "--drift",
+            (Math.random() * 130 - 65) + "px"
+        );
+
+        document.body.appendChild(el);
+
+        setTimeout(() => el.remove(), 4100);
+
+    }
+
+    setInterval(() => {
+
+        if (!document.hidden) {
+
+            heart(
+                Math.random() * innerWidth,
+                innerHeight + 15
+            );
+
+        }
+
+    }, 850);
+
+
+    /* SPARKLE EFFECT */
+
+    function spark(x, y) {
+
+        for (let i = 0; i < 12; i++) {
+
+            const s = document.createElement("i");
+
+            s.className = "spark";
+
+            s.style.left = x + "px";
+            s.style.top = y + "px";
+
+            const a = Math.PI * 2 * i / 12;
+
+            const r = 30 + Math.random() * 60;
+
+            s.style.setProperty(
+                "--dx",
+                Math.cos(a) * r + "px"
+            );
+
+            s.style.setProperty(
+                "--dy",
+                Math.sin(a) * r + "px"
+            );
+
+            document.body.appendChild(s);
+
+            setTimeout(() => s.remove(), 1600);
+
+        }
+
+    }
+
+
+    /* BUTTON CLICK EFFECT */
+
+    document.addEventListener("click", e => {
+
+        if (e.target.closest("button")) {
+
+            spark(e.clientX, e.clientY);
+
+        }
+
+    });
+
+
+    /* BACK TO TOP */
+
+    document.getElementById("toTop")
+        .addEventListener("click", () => {
+
+            scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+})();
+
+</script>
+
+</body>
+</html>
